@@ -1,0 +1,6 @@
+library_management\returning\returning.class
+library_management\endresult.class
+library_management\addbook\addbook.class
+library_management\connection\connection.class
+library_management\details\details.class
+library_management\issue\issue.class
