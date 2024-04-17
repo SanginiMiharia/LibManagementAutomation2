@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: lib-app
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: lib-app
+    spec:
+      containers:
+      - name: lib-app
+        image: 211125740082.dkr.ecr.eu-north-1.amazonaws.com/libautomation:$BUILD_NUMBER
+        ports:
+        - containerPort: 8082
+        imagePullSecrets:
+      - name: ecr-registry-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lib-service
+spec:
+  selector:
+    app: lib-app
+  ports:
+    - port: 8082
+      targetPort: 8082
+
