@@ -14,9 +14,9 @@ pipeline {
             steps {
                sh '''
                     aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 211125740082.dkr.ecr.eu-north-1.amazonaws.com
-                    echo 'admin'| sudo -S docker build -t libautomation .
-                    echo 'admin'| sudo -S docker tag libautomation:latest 211125740082.dkr.ecr.eu-north-1.amazonaws.com/libautomation:$BUILD_NUMBER
-                    echo 'admin'| sudo -S docker push 211125740082.dkr.ecr.eu-north-1.amazonaws.com/libautomation:$BUILD_NUMBER 
+                    docker build -t libautomation .
+                    docker tag libautomation:latest 211125740082.dkr.ecr.eu-north-1.amazonaws.com/libautomation:$BUILD_NUMBER
+                    docker push 211125740082.dkr.ecr.eu-north-1.amazonaws.com/libautomation:$BUILD_NUMBER 
 
                '''
            }
