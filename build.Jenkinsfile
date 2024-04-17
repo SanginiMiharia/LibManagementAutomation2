@@ -21,10 +21,10 @@ pipeline {
                '''
            }
         }
-        stage('Trigger Deploy') {
+        stage('Trigger Deploy ') {
               steps {
                   build job: 'libDeploy', wait: false, parameters: [
-                      string(name: 'lib_IMAGE_URL', value: "211125740082.dkr.ecr.eu-north-1.amazonaws.com/libautomation:$BUILD_NUMBER ")
+                      string(name: 'lib_IMAGE_URL', value: "211125740082.dkr.ecr.eu-north-1.amazonaws.com/libautomation:$BUILD_NUMBER ") 
                   ]
               }
         }
